@@ -1,5 +1,5 @@
 body{
-    background-image: url(../img/b3.jpg);
+    background-image: url(../img/img9.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -30,8 +30,9 @@ table{
     font-weight: 700;
     line-height: 63px;
     margin-top: 15%;
-    text-align: center;
+    text-align: left;
     margin-bottom: 0;
+    padding-left: 20px;
 }
 
 .sub-text2{
@@ -39,7 +40,7 @@ table{
     font-size: 17px;
     line-height: 27px;
     font-weight: 400;
-    text-align: center;
+    text-align: left;
     margin-top: 0;
 }
 

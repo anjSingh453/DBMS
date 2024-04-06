@@ -46,7 +46,7 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $userfetch=$result->fetch_assoc();
-        $userid= $userfetch["pid"];
+    $userid= $userfetch["pid"];
     $username=$userfetch["pname"];
 
 
