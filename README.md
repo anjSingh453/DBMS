@@ -69,7 +69,7 @@ This initiative facilitates online appointment requests for clients or patients 
 
 Apache Version: 	`2.4.39`
 
-PHP Version: 		`7.3.5`
+PHP Version: 		`8.0.1`
 
 Server Software: 	`Apache/2.4.39 (Win64) PHP/7.3.5`
 
