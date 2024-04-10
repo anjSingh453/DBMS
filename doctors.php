@@ -55,17 +55,17 @@ include 'connection.php';
     if($result->num_rows > 0) {
         // Display doctors
         while($row = $result->fetch_assoc()) {
+            if ($row['docimage']) 
+            {
+                echo '<img src=' . $row['docimage'] . ' alt="Image" width= "' . 150 . '" height="' . 150 . '">'; 
+            } else {
+                echo "Image Not Found";
+            }
             echo "<div class='doctor'>";
             echo "<h2>" . $row['docname'] . "</h2>"; // Change 'doctor_name' to the actual column name in your database
             echo "<p><strong>Specialization:</strong> " . $row['specialties'] . "</p>"; // Change 'specialization' to the actual column name in your database
             echo "<p>" . $row['specialties'] . "</p>"; // Change 'description' to the actual column name in your database
             echo "</div>";
-            if ($row['docimage']) 
-            {
-                echo '<img src='  .$row['docimage'] . ' alt="Image" width= "' . 150 . '" height="' . 150 . '">'; 
-            } else {
-                echo "Image Not Found";
-            }
         }
     } else {
         // No doctors found
