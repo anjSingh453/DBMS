@@ -392,6 +392,9 @@ input[type=search]:focus {
 .menu-icon-home{
   background-image: url('../img/icons/home.svg');
 }
+.menu-icon-symptom{
+  background-image: url('../img/icons/symptom.svg');
+}
 
 
 
@@ -421,7 +424,11 @@ input[type=search]:focus {
   
   background-image: url('../img/icons/patients-hover.svg');
 }
-
+.menu-icon-symptom:hover,.menu-icon-symptom-active{
+  color: var(--primarycolor);
+  
+  background-image: url('../img/icons/symptom.svg');
+}
 .menu-icon-settings:hover,.menu-icon-settings-active{
   color: var(--primarycolor);
   

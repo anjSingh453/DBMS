@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="icon" href="../img/healthlogo.png" type="image/x-icon">    
         
     <title>Doctors</title>
     <style>
@@ -88,6 +89,11 @@
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-appoinment">
                         <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">My Bookings</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-symptom">
+                        <a href="symptom.php" class="non-style-link-menu"><div><p class="menu-text">Symptom Match</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
@@ -273,11 +279,11 @@
         </div>
     </div>
     <?php 
-    if($_GET){
+    if ($_GET) {
         
         $id=$_GET["id"];
         $action=$_GET["action"];
-        if($action=='drop'){
+        if ($action=='drop') {
             $nameget=$_GET["name"];
             echo '
             <div id="popup1" class="overlay">
@@ -298,7 +304,8 @@
             </div>
             </div>
             ';
-        }elseif($action=='view'){
+        } 
+        elseif ($action=='view') {
             $sqlmain = "SELECT * FROM doctor WHERE docid=?";
             $stmt = $database->prepare($sqlmain);
             $stmt->bind_param("i",$id);
@@ -407,7 +414,7 @@
             </div>
             </div>
             ';
-        }elseif($action=='session'){
+        } elseif ($action=='session') {
             $name=$_GET["name"];
             echo '
             <div id="popup1" class="overlay">
@@ -435,7 +442,7 @@
             </div>
             ';
         }
-        }elseif($action=='edit'){
+        elseif ($action=='edit') {
             $sqlmain= "select * from doctor where docid=?";
             $stmt = $database->prepare($sqlmain);
             $stmt->bind_param("i",$id);
@@ -600,7 +607,7 @@
                     </div>
                     </div>
                     ';
-        }else{
+        } else {
             echo '
                 <div id="popup1" class="overlay">
                         <div class="popup">
@@ -627,6 +634,7 @@
 
         }; 
     };
+};
 
 ?>
 </div>

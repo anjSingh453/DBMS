@@ -198,7 +198,7 @@
                                                     <?php    echo $appointmentrow ->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard" >
-                                                    NewBooking &nbsp;&nbsp;
+                                                    New Booking &nbsp;&nbsp;
                                                 </div>
                                         </div>
                                                 <div class="btn-icon-back dashboard-icons" style="margin-left: 0px;background-image: url('../img/icons/book-hover.svg');"></div>
@@ -210,7 +210,7 @@
                                                 <div class="h1-dashboard">
                                                     <?php    echo $schedulerow ->num_rows  ?>
                                                 </div><br>
-                                                <div class="h3-dashboard" style="font-size: 15px">
+                                                <div class="h3-dashboard">
                                                     Today Sessions
                                                 </div>
                                         </div>
@@ -234,26 +234,28 @@
                         <table width="100%" border="0" class="dashbord-tables">
                             <tr>
                                 <td>
-                                    <p style="padding:10px;padding-left:48px;padding-bottom:0;font-size:23px;font-weight:700;color:var(--primarycolor);">
-                                        Upcoming Appointments until Next <?php  
+                                    <p style="padding:10px;padding-left:20px;padding-top:0;padding-bottom:0;font-size:20px;font-weight:700;color:var(--primarycolor);">
+                                        <u>Upcoming Appointments until Next <?php  
                                         echo date("l",strtotime("+1 week"));
                                         ?>
+                                        </u>
                                     </p>
-                                    <p style="padding-bottom:19px;padding-left:50px;font-size:15px;font-weight:500;color:#212529e3;line-height: 20px;">
+                                    <p style="padding-bottom:19px;padding-left:35px;font-size:15px;font-weight:500;color:#212529e3;line-height: 20px;">
                                         Here's Quick access to Upcoming Appointments until 7 days<br>
-                                        More details available in @Appointment section.
+                                        More details available in <b>@Appointment</b> section.
                                     </p>
 
                                 </td>
                                 <td>
-                                    <p style="text-align:right;padding:10px;padding-right:48px;padding-bottom:0;font-size:23px;font-weight:700;color:var(--primarycolor);">
-                                        Upcoming Sessions  until Next <?php  
+                                    <p style="padding:10px;padding-left:20px;padding-bottom:0;padding-top:0;font-size:20px;font-weight:700;color:var(--primarycolor);">
+                                        <u>Upcoming Sessions until Next <?php  
                                         echo date("l",strtotime("+1 week"));
                                         ?>
+                                        </u>
                                     </p>
-                                    <p style="padding-bottom:19px;text-align:right;padding-right:50px;font-size:15px;font-weight:500;color:#212529e3;line-height: 20px;">
-                                        Here's Quick access to Upcoming Sessions that Scheduled until 7 days<br>
-                                        Add,Remove and Many features available in @Schedule section.
+                                    <p style="padding-bottom:19px;padding-left:35px;font-size:15px;font-weight:500;color:#212529e3;line-height: 20px;">
+                                        Here's Quick access to Upcoming Sessions until 7 days<br>
+                                        More details available in <b>@Schedule</b> section.                                        
                                     </p>
                                 </td>
                             </tr>
@@ -264,7 +266,7 @@
                                         <table width="85%" class="sub-table scrolldown" border="0">
                                         <thead>
                                         <tr>    
-                                                <th class="table-headin" style="font-size: 12px;">
+                                                <th class="table-headin">
                                                         
                                                     Appointment number
                                                     
@@ -376,7 +378,7 @@
                                                 </th>
                                                 <th class="table-headin">
                                                     
-                                                    Sheduled Date & Time
+                                                    Scxheduled Date & Time
                                                     
                                                 </th>
                                                     

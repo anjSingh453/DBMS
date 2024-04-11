@@ -7,9 +7,24 @@
     <link rel="stylesheet" href="css/animations.css">  
     <link rel="stylesheet" href="css/main.css">  
     <link rel="stylesheet" href="css/login.css">
-        
+    <link rel="icon" href="img/healthlogo.png" type="image/x-icon">    
     <title>Login</title>
+    <style>
+        .link-box {
+            display: inline-block;
+            padding: 10px 20px; /* Adjust padding as needed */
+            background-color:var(--primarycolor) ; /* Background color */
+            color: #fff; /* Text color */
+            text-decoration: none; /* Remove default underline */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid var(--primarycolor); /* Border */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
 
+        .link-box:hover {
+            background-color: #ddd; /* Background color on hover */
+        }
+    </style>
     
     
 </head>
@@ -101,22 +116,14 @@
         }else{
             $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">We cant found any acount for this email.</label>';
         }
-
-
-
-
-
-
-        
+    
     }else{
         $error='<label for="promter" class="form-label">&nbsp;</label>';
     }
 
     ?>
-
-
-
-
+    
+    <a href="index.html" class="link-box"><-  Back to Home</a>
 
     <center>
     <div class="container">

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
-        
+    <link rel="icon" href="../img/healthlogo.png" type="image/x-icon">    
     <title>Dashboard</title>
     <style>
         .dashbord-tables{
@@ -102,6 +102,11 @@
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-appoinment">
                         <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">My Bookings</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-symptom">
+                        <a href="symptom.php" class="non-style-link-menu"><div><p class="menu-text">Symptom Match</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >

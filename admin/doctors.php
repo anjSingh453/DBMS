@@ -308,7 +308,7 @@
             $name=$row["docname"];
             $email=$row["docemail"];
             $spe=$row["specialties"];
-            
+            $pic = $row["docimage"];
             $spcil_res= $database->query("select sname from specialties where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
             $spcil_name=$spcil_array["sname"];
@@ -321,15 +321,21 @@
                         <h2></h2>
                         <a class="close" href="doctors.php">&times;</a>
                         <div class="content">
-                            eDoc Web App<br>
+                            Health Sphere<br>
                             
                         </div>
-                        <div style="display: flex;justify-content: center;">
+                        <div class="scrollable-container" style="max-height: 400px; overflow-y: auto;">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
                         
                             <tr>
                                 <td>
                                     <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">View Details.</p><br><br>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <img src= "'. $pic .'" alt="Image" width="133" height="150"><br>
                                 </td>
                             </tr>
                             
