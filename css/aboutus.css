@@ -1,45 +1,48 @@
-body {
-    font-family: Arial, sans-serif;
+/* Resetting default margin and padding */
+body, h1, p {
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
 }
 
+/* Setting styles for the container */
 .container {
-    width: 80%;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(1, 0, 0, 0.1);
 }
 
+/* Styling the heading */
 h1 {
-    font-size: 36px;
+    font-size: 2.5em;
+    margin-bottom: 20px;
     color: #333;
-    text-align: center;
-    margin-bottom: 20px;
 }
 
+/* Styling paragraphs */
 p {
-    font-size: 18px;
-    color: #666;
+    font-size: 1.1em;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    color: #666;
 }
 
-/* Adjust styles for smaller screens */
-@media screen and (max-width: 768px) {
-    .container {
-        width: 90%;
-        padding: 20px;
-    }
+/* Styling paragraphs with emphasis */
+p em {
+    font-style: italic;
+    color: #555;
+}
 
-    h1 {
-        font-size: 30px;
-    }
+/* Styling links */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-    p {
-        font-size: 16px;
-    }
+a:hover {
+    color: #0056b3;
 }

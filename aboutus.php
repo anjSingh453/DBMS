@@ -4,8 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Health Sphere</title>
-    <!-- You can add your CSS styles here -->
-    <link rel="stylesheet" href="css/aboutus.css">
+    <style>
+        /* Resetting default margin and padding */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        /* Setting styles for the container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-image: url('img/b4.jpg');
+            font-family: 'Roboto', sans-serif;
+
+
+        }
+
+        /* Styling the heading */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Styling paragraphs */
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        /* Styling paragraphs with emphasis */
+        p em {
+            font-style: italic;
+            color: #444;
+        }
+
+        /* Styling links */
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
