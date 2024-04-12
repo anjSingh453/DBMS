@@ -209,12 +209,6 @@
                         <table border="0" width="100%"">
                             <tr>
                                 <td width="50%">
-
-                                    
-
-
-
-
                                     <center>
                                         <table class="filter-container" style="border: none;" border="0">
                                             <tr>
@@ -236,7 +230,7 @@
                                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
                                                     </div>
                                                 </td>
-                                                <td style="width: 25%;">
+                                             <!--   <td style="width: 25%;">
                                                     <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex;">
                                                         <div>
                                                                 <div class="h1-dashboard">
@@ -248,10 +242,10 @@
                                                         </div>
                                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
                                                     </div>
-                                                </td>
+                                                </td> -->
                                                 </tr>
                                                 <tr>
-                                                <td style="width: 25%;">
+                                               <!-- <td style="width: 25%;">
                                                     <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex; ">
                                                         <div>
                                                                 <div class="h1-dashboard" >
@@ -264,9 +258,9 @@
                                                                 <div class="btn-icon-back dashboard-icons" style="margin-left: 0px;background-image: url('../img/icons/book-hover.svg');"></div>
                                                     </div>
                                                     
-                                                </td>
+                                                </td>-->
 
-                                                <td style="width: 25%;">
+                                            <!--    <td style="width: 25%;">
                                                     <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex;padding-top:21px;padding-bottom:21px;">
                                                         <div>
                                                                 <div class="h1-dashboard">
@@ -278,7 +272,7 @@
                                                         </div>
                                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/session-iceblue.svg');"></div>
                                                     </div>
-                                                </td>
+                                                </td>-->
                                                 
                                             </tr>
                                         </table>
@@ -292,6 +286,24 @@
 
 
                                 </td>
+                                <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script>
+  window.botpressWebChat.init({
+      "composerPlaceholder": "Chat with bot",
+      "botConversationDescription": "This chatbot was built surprisingly fast with Botpress",
+      "botId": "f891bd93-81ec-462e-9c35-4b614d6b2a12",
+      "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+      "messagingUrl": "https://messaging.botpress.cloud",
+      "clientId": "f891bd93-81ec-462e-9c35-4b614d6b2a12",
+      "webhookId": "3886936b-c81b-46cd-a997-4393ec4d5d6e",
+      "lazySocket": true,
+      "themeName": "prism",
+      "frontendVersion": "v1",
+      "showPoweredBy": true,
+      "theme": "prism",
+      "themeColor": "#2563eb"
+  });
+</script>
                                 <td>
 
 

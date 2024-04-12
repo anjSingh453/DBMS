@@ -15,7 +15,9 @@
         .container {
             display: flex; /* Use flexbox for layout */
             justify-content: center; /* Center-align items horizontally */
-            margin-top: 20px; /* Add margin to the top of the container */
+            margin-top:100px; /* Add margin to the top of the container */
+            background-image: url('img/b4.jpg');
+
         }
         .contact-info {
             text-align: left; /* Left-align text */
