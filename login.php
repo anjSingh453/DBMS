@@ -34,9 +34,6 @@
     //import database
     include("connection.php");
 
-    
-
-
 
     if($_POST){
 
