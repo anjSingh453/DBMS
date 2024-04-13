@@ -395,6 +395,9 @@ input[type=search]:focus {
 .menu-icon-symptom{
   background-image: url('../img/icons/symptom.svg');
 }
+.menu-icon-report{
+  background-image: url('../img/icons/upload.svg');
+}
 
 
 
@@ -428,6 +431,11 @@ input[type=search]:focus {
   color: var(--primarycolor);
   
   background-image: url('../img/icons/symptom.svg');
+}
+.menu-icon-report:hover,.menu-icon-report-active{
+  color: var(--primarycolor);
+  
+  background-image: url('../img/icons/upload.svg');
 }
 .menu-icon-settings:hover,.menu-icon-settings-active{
   color: var(--primarycolor);

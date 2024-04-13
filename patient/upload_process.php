@@ -2,7 +2,7 @@
 session_start();
 
 // Check if the patient is logged in and retrieve their ID from the session
-if (isset($_SESSION['pid'])) {
+if (!isset($_SESSION['user'])) {
     echo "Error: Patient not logged in.";
     exit;
 }
@@ -10,13 +10,14 @@ if (isset($_SESSION['pid'])) {
 // Check if a file was uploaded
 if (isset($_FILES['report']) && $_FILES['report']['error'] === UPLOAD_ERR_OK) {
     // Retrieve patient ID from session
-    $pid = $_SESSION['pid'];
+    $pid = $_SESSION['user'];
     echo $pid;
+
     // Database connection
-    $servername = "localhost"; // Change this to your database server
-    $username = "root"; // Change this to your database username
-    $password = ""; // Change this to your database password
-    $dbname = "edoc"; // Change this to your database name
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "edoc";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -27,25 +28,27 @@ if (isset($_FILES['report']) && $_FILES['report']['error'] === UPLOAD_ERR_OK) {
     }
 
     // Prepare statement
-    $stmt = $conn->prepare("INSERT INTO clinical_report (pid, report_pdf) VALUES (?, ?)");
-    $stmt->bind_param("ib", $pid, $report_pdf);
+    $report_pdf = base64_encode(file_get_contents($_FILES['report']['tmp_name']));
+   $stmt = $conn->prepare("INSERT INTO clinical_report (report_pdf) VALUES (?)");
+    $stmt->bind_param("b", $report_pdf);
 
     // Assign uploaded file to variable
     $report_pdf = file_get_contents($_FILES['report']['tmp_name']);
 
     // Execute statement
-    if ($stmt->execute() === TRUE) {
+    if ($stmt->execute() == TRUE) {
         echo "Report uploaded successfully.";
     } else {
         echo "Error: " . $stmt->error;
     }
+
+    // Display the PDF using an iframe with data URI
     if ($report_pdf !== null) {
-        // Display the PDF using an iframe with data URI
         echo '<iframe src="data:application/pdf;base64,'.base64_encode($report_pdf).'" width="100%" height="600px"></iframe>';
     } else {
         echo "Report not found.";
     }
-    
+
     // Close connections
     $stmt->close();
     $conn->close();

@@ -110,7 +110,7 @@
                     </td>
                 </tr>
                 <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-symptom">
+                    <td class="menu-btn menu-icon-report">
                         <a href="upload_report.html" class="non-style-link-menu"><div><p class="menu-text">Upload Report</p></a></div>
                     </td>
                 </tr>
