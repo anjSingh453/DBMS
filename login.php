@@ -69,7 +69,8 @@
                     //   Patient dashbord
                     $_SESSION['user']=$email;
                     $_SESSION['usertype']='p';
-                    
+                    $_SESSION['pid'] = $pid; // Set patient ID in session
+
                     header('location: patient/index.php');
 
                 }else{

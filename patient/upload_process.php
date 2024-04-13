@@ -1,0 +1,55 @@
+<?php
+session_start();
+
+// Check if the patient is logged in and retrieve their ID from the session
+if (isset($_SESSION['pid'])) {
+    echo "Error: Patient not logged in.";
+    exit;
+}
+
+// Check if a file was uploaded
+if (isset($_FILES['report']) && $_FILES['report']['error'] === UPLOAD_ERR_OK) {
+    // Retrieve patient ID from session
+    $pid = $_SESSION['pid'];
+    echo $pid;
+    // Database connection
+    $servername = "localhost"; // Change this to your database server
+    $username = "root"; // Change this to your database username
+    $password = ""; // Change this to your database password
+    $dbname = "edoc"; // Change this to your database name
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare statement
+    $stmt = $conn->prepare("INSERT INTO clinical_report (pid, report_pdf) VALUES (?, ?)");
+    $stmt->bind_param("ib", $pid, $report_pdf);
+
+    // Assign uploaded file to variable
+    $report_pdf = file_get_contents($_FILES['report']['tmp_name']);
+
+    // Execute statement
+    if ($stmt->execute() === TRUE) {
+        echo "Report uploaded successfully.";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    if ($report_pdf !== null) {
+        // Display the PDF using an iframe with data URI
+        echo '<iframe src="data:application/pdf;base64,'.base64_encode($report_pdf).'" width="100%" height="600px"></iframe>';
+    } else {
+        echo "Report not found.";
+    }
+    
+    // Close connections
+    $stmt->close();
+    $conn->close();
+} else {
+    echo "Error uploading file.";
+}
+?>

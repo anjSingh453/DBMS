@@ -101,6 +101,14 @@
                         <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">My Patients</p></a></div>
                     </td>
                 </tr>
+                <tr class="menu-row">
+    <td class="menu-btn menu-icon-report">
+        <a href="clinical_reports.php" class="non-style-link-menu">
+            <div><p class="menu-text">Clinical Reports</p></div>
+        </a>
+    </td>
+</tr>
+
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
                         <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
