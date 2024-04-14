@@ -128,6 +128,16 @@
                     </td>
                 </tr>
                 <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-report">
+                        <a href="upload_report.php" class="non-style-link-menu"><div><p class="menu-text">Upload Report</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-prescription">
+                        <a href="prescription_show.php" class="non-style-link-menu"><div><p class="menu-text">Prescription</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
                         <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
                     </td>

@@ -73,6 +73,11 @@ body{
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.file-label {
+  display: inline-block;
+  width: 150px; /* Adjust the width as needed */
+  text-align: left;
+}
 
 .input-text:hover{
     background-color: rgb(250, 250, 250);
@@ -398,7 +403,9 @@ input[type=search]:focus {
 .menu-icon-report{
   background-image: url('../img/icons/upload.svg');
 }
-
+.menu-icon-prescription{
+  background-image: url('../img/icons/prescription.svg');
+}
 
 
 .menu-icon-dashbord:hover,.menu-icon-dashbord-active{
@@ -431,6 +438,11 @@ input[type=search]:focus {
   color: var(--primarycolor);
   
   background-image: url('../img/icons/symptom.svg');
+}
+.menu-icon-prescription:hover,.menu-icon-prescription-active{
+  color: var(--primarycolor);
+  
+  background-image: url('../img/icons/prescription.svg');
 }
 .menu-icon-report:hover,.menu-icon-report-active{
   color: var(--primarycolor);

@@ -173,6 +173,16 @@ button {
                     </td>
                 </tr>
                 <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-report">
+                        <a href="upload_report.php" class="non-style-link-menu"><div><p class="menu-text">Upload Report</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-prescription">
+                        <a href="prescription_show.php" class="non-style-link-menu"><div><p class="menu-text">Prescription</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
                         <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
                     </td>
@@ -230,10 +240,10 @@ button {
                     <td width="13%" >
                     <a href="schedule.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
                     </td>
-                    <td >
+                     <td >
                         <form action="" method="post" class="header-search">
                             <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Doctor name or Email or Date (YYYY-MM-DD)" list="doctors" value="<?php  echo $insertkey ?>">&nbsp;&nbsp;
-                            <?php
+                             <?php
                                 echo '<datalist id="doctors">';
                                 $list11 = $database->query("select DISTINCT * from  doctor;");
                                 $list12 = $database->query("select DISTINCT * from  schedule GROUP BY title;");
@@ -247,7 +257,7 @@ button {
                                 for ($y=0;$y<$list12->num_rows;$y++) {
                                     $row00=$list12->fetch_assoc();
                                     $d=$row00["title"];
-                                    if ($d != "Test Session") { // Exclude "Test Session"
+                                    if ($d != "Test Session") { 
                                         echo "<option value='$d'><br/>";
                                     }
                                 }
@@ -321,57 +331,9 @@ button {
         <textarea id="message" name="message" rows="4"></textarea><br><br>
 
         <button type="submit">Submit Appointment Request</button>
-    </form>
+    </form> 
     </div>
-                            <div class="abc scroll">
-                                <table width="100%" class="sub-table scrolldown" border="0" style="padding: 50px;border:none">
-                                    <tbody>
-                                        <?php
-                                            if ($result->num_rows == 0) {
-                                                echo '<tr>
-                                                        <td colspan="4">
-                                                            <br><br><br><br>
-                                                            <center>
-                                                                <img src="../img/notfound.svg" width="25%">
-                                                                <br>
-                                                                <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                                                <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Sessions &nbsp;</font></button></a>
-                                                            </center>
-                                                            <br><br><br><br>
-                                                        </td>
-                                                    </tr>';
-                                            } else {
-                                                for ($x = 0; $x < ($result->num_rows); $x++) {
-                                                    echo "<tr>";
-                                                    for ($q = 0; $q < 3; $q++) {
-                                                        $row = $result->fetch_assoc();
-                                                        if (!isset($row)) {
-                                                            break;
-                                                        }
-                                                        $title = $row["title"];
-                                                        if ($title != "Test Session") { // Exclude "Test Session"
-                                                            $docname = $row["docname"];
-                                                            $scheduledate = $row["scheduledate"];
-                                                            $scheduletime = $row["scheduletime"];
-
-                                                            echo '<td style="width: 25%;">
-                                                                    <div  class="dashboard-items search-items"  >
-                                                                        <div style="width:100%">
-                                                                            <div class="h1-search">' . substr($title, 0, 21) . '</div><br>
-                                                                            <div class="h3-search">' . substr($docname, 0, 30) . '</div>
-                                                                            <div class="h4-search">' . $scheduledate . '<br>Starts: <b>@' . substr($scheduletime, 0, 5) . '</b> (24h)</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>';
-                                                        }
-                                                    }
-                                                    echo "</tr>";
-                                                }
-                                            }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                           
                         </center>
                     </td> 
                 </tr>

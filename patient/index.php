@@ -54,8 +54,8 @@
 
     $userid= $userfetch["pid"];
     $username=$userfetch["pname"];
-
-
+  $_SESSION["pid"]=$userid;
+  $_SESSION["pname"]=$username;
     //echo $userid;
     //echo $username;
     
@@ -111,7 +111,12 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-report">
-                        <a href="upload_report.html" class="non-style-link-menu"><div><p class="menu-text">Upload Report</p></a></div>
+                        <a href="upload_report.php" class="non-style-link-menu"><div><p class="menu-text">Upload Report</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-prescription">
+                        <a href="prescription_show.php" class="non-style-link-menu"><div><p class="menu-text">Prescription</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >

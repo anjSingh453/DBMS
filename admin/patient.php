@@ -206,6 +206,7 @@
                                     Events
                                     
                                 </tr>
+                                
                         </thead>
                         <tbody>
                         
@@ -284,6 +285,7 @@
             </table>
         </div>
     </div>
+    
     <?php 
     if($_GET){
         
@@ -298,6 +300,10 @@
             $dob=$row["pdob"];
             $tele=$row["ptel"];
             $address=$row["paddress"];
+            $_SESSION["pname"] = $name;
+            $_SESSION["pid"] = $id;
+            $_SESSION["pemail"]=$email;
+            $_SESSION["pnic"]=$nic;
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
@@ -388,19 +394,24 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    '.$dob.'<br><br>
+                                    '.$dob.'<br>
                                 </td>
                                 
                             </tr>
                             <tr>
                                 <td colspan="2">
                                     <a href="patient.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
+                                    <!-- Modify the button to remove the href attribute and add an onclick attribute -->
+                                    <a href="prescription.php?id=<?php echo $id; ?>&name=<?php echo urlencode($name); ?>&email=<?php echo urlencode($email); ?>">
+                                    <input type="button" value="UPLOAD" class="login-btn btn-primary-soft btn">
                                 
-                                    
+                                
+                                    </a>
+                                                                    
                                 </td>
                 
                             </tr>
-                           
+                         
 
                         </table>
                         </div>
@@ -413,6 +424,8 @@
     };
 
 ?>
+ 
+
 </div>
 
 </body>
