@@ -104,11 +104,17 @@ button {
     $stmt->bind_param("s", $useremail);
     $stmt->execute();
     $result = $stmt->get_result();
-
+   
     if ($result->num_rows > 0) {
         $userfetch = $result->fetch_assoc();
         $userid = $userfetch["pid"];
         $username = $userfetch["pname"];
+        $usertel = $userfetch["ptel"]; 
+        $_SESSION["name"]=$username;
+        $_SESSION["tel"]=$usertel;
+        $_SESSION["pid"]=$userid;
+        $_SESSION["email"]=$useremail;
+        
     } else {
         header("location: ../login.php");
         exit;
@@ -211,6 +217,7 @@ button {
                 $insertkey=$keyword;
                 $searchtype="Search Result : ";
                 $q='"';
+
             }
         }
 
@@ -304,17 +311,17 @@ button {
             <p class="error"><?php echo $_GET['error'];?></p>
         <?php } ?>
 
-        <label>User Name</label>
-        <input type="text" name="uname" required><br><br>
+    
+     <!--   <input type="text" name="uname" required><br><br>
 
         <label>Password</label>
         <input type="password" name="password" placeholder="Password"><br><br>
 
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required><br><br>
+        <input type="tel" id="phone" name="phone" required><br><br> -->
 
-        <label for="department">Department:</label>
-        <select id="department" name="department" required>
+        <label for="department" style="color: black;">Department:</label>
+<select id="department" name="department" required style="color: black;">
             <option value="">-- Select Department --</option>
             <option value="cardiology">Cardiology</option>
             <option value="neurology">Neurology</option>
@@ -328,9 +335,18 @@ button {
         <input type="time" id="time" name="time" required><br><br>
 
         <label for="message">Additional Information (optional):</label>
-        <textarea id="message" name="message" rows="4"></textarea><br><br>
+        <textarea id="message" name="message" rows="4"></textarea><br>
 
-        <button type="submit">Submit Appointment Request</button>
+        <!--<button type="submit">Submit Appointment Request</button>-->
+        <input type="submit" value="Submit Appointment Request" class="logout-btn btn-primary-soft btn"><br>
+       <?php
+   
+       /* echo $username , "<br>"; echo $usertel,"<br>"; 
+        $_SESSION["name"]=$username;
+        $_SESSION["tel"]=$usertel;
+        $_SESSION["pid"]=$userid;
+        $_SESSION["email"]=$useremail;*/
+        ?>
     </form> 
     </div>
                            

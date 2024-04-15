@@ -51,14 +51,14 @@
     $stmt->execute();
     $userrow = $stmt->get_result();
     $userfetch=$userrow->fetch_assoc();
-
+    $usertel = $userfetch["ptel"]; 
+    $_SESSION["ptel"] = $usertel;
     $userid= $userfetch["pid"];
     $username=$userfetch["pname"];
+    //$usertel=$userfetch["ptel"];
+    $_SESSION["ptel"]=$usertel;
   $_SESSION["pid"]=$userid;
-  $_SESSION["pname"]=$username;
-    //echo $userid;
-    //echo $username;
-    
+  $_SESSION["pname"]=$username; 
     ?>
     <div class="container">
         <div class="menu">
