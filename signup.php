@@ -7,16 +7,30 @@
     <link rel="stylesheet" href="css/animations.css">  
     <link rel="stylesheet" href="css/main.css">  
     <link rel="stylesheet" href="css/signup.css">
+    <link rel="icon" href="img/healthlogo.png" type="image/x-icon">
         
     <title>Sign Up</title>
-    
+<style>
+    .link-box {
+            display: inline-block;
+            padding: 10px 20px; /* Adjust padding as needed */
+            background-color: var(--primarycolor) ; /* Background color */
+            color: #fff; /* Text color */
+            text-decoration: none; /* Remove default underline */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid var(--primarycolor); /* Border */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .link-box:hover {
+            background-color: #ddd; /* Background color on hover */
+        }
+</style>    
 </head>
 <body>
+<a href="index.html" class="link-box"><-  Back to Home</a>
+
 <?php
-
-//learn from w3schools.com
-//Unset all the server side variables
-
 session_start();
 
 $_SESSION["user"]="";

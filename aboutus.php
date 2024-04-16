@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="css/main.css">  
+    <link rel="icon" href="img/healthlogo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Health Sphere</title>
     <style>
+
+        .link-box {
+            display: inline-block;
+            padding: 10px 20px; /* Adjust padding as needed */
+            background-color: var(--primarycolor) ; /* Background color */
+            color: #fff; /* Text color */
+            text-decoration: none; /* Remove default underline */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid var(--primarycolor); /* Border */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .link-box:hover {
+            background-color: #ddd; /* Background color on hover */
+        }
         /* Resetting default margin and padding */
-        body, h1, p {
+         h1, p {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+
         }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url(img/bg6.jpg) 
+        }
+
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
         /* Setting styles for the container */
@@ -18,10 +43,10 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9;
+        
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-image: url('img/b4.jpg');
+            background-image: url('img/b3.jpg');
             font-family: 'Roboto', sans-serif;
 
 
@@ -61,6 +86,7 @@
     </style>
 </head>
 <body>
+<a href="index.html" class="link-box"><-  Back to Home</a>
     <div class="container">
         <h1>Welcome to Health Sphere</h1>
         <p>At Health Sphere, we're dedicated to revolutionizing the way healthcare is delivered.</p>

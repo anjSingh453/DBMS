@@ -6,10 +6,26 @@ include 'connection.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/main.css">  
+    <link rel="icon" href="img/healthlogo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Team of Physicians</title>
     <style>
+        .link-box {
+            display: inline-block;
+            padding: 10px 20px; /* Adjust padding as needed */
+            background-color:var(--primarycolor) ; /* Background color */
+            color: #fff; /* Text color */
+            text-decoration: none; /* Remove default underline */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid var(--primarycolor); /* Border */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .link-box:hover {
+            background-color: #ddd; /* Background color on hover */
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -42,7 +58,7 @@ include 'connection.php';
     </style>
 </head>
 <body>
-
+<a href="index.html" class="link-box"><-  Back to Home</a>
 <div class="container">
     <h1>Meet Our Dedicated Team of Doctors</h1>
 
@@ -50,9 +66,9 @@ include 'connection.php';
     
     <?php
     // Fetch doctors from the database
-    $query = "SELECT * FROM doctor";
+    $query = "SELECT * FROM doctor d, specialties s WHERE d.specialties = s.id";
     $result = $database->query($query);
-
+    $query = "SELECT sname FROM specialities WHERE ";
     // Check if any rows were returned
     if($result->num_rows > 0) {
         // Display doctors
@@ -65,8 +81,8 @@ include 'connection.php';
             }
             echo "<div class='doctor'>";
             echo "<h2>" . $row['docname'] . "</h2>"; // Change 'doctor_name' to the actual column name in your database
-            echo "<p><strong>Specialization:</strong> " . $row['specialties'] . "</p>"; // Change 'specialization' to the actual column name in your database
-            echo "<p>" . $row['specialties'] . "</p>"; // Change 'description' to the actual column name in your database
+            echo "<p><strong>Specialization:</strong> " . $row['sname'] . "</p>"; // Change 'specialization' to the actual column name in your database
+            echo "<p>" . $row['qualification'] . "</p>"; // Change 'description' to the actual column name in your database
             echo "</div>";
         }
     } else {

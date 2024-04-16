@@ -326,6 +326,7 @@ button {
             <option value="cardiology">Cardiology</option>
             <option value="neurology">Neurology</option>
             <option value="pediatrics">Pediatrics</option>
+            <option value="oncology">Oncology</option>
         </select><br><br>
 
         <label for="date">Preferred Date:</label>

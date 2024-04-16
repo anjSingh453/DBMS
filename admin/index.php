@@ -24,27 +24,28 @@
     
 </head>
 <body>
-    <?php
+        <?php
 
-    //learn from w3schools.com
+        session_start();
 
-    session_start();
+        if(isset($_SESSION["user"])){
+            if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
+                header("location: ../login.php");
+            }else{
+                $useremail=$_SESSION["user"];
+            }
 
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
+        }else{
             header("location: ../login.php");
         }
 
-    }else{
-        header("location: ../login.php");
-    }
-    
 
-    //import database
-    include("../connection.php");
 
-    
-    ?>
+        //import database
+        include("../connection.php");
+
+
+        ?>
     <div class="container">
         <div class="menu">
             <table class="menu-container" border="0">
@@ -57,7 +58,7 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
+                                    <p class="profile-subtitle"><?php echo substr($useremail,0,22)?></p>
                                 </td>
                             </tr>
                             <tr>
@@ -205,7 +206,7 @@
                                     </div>
                                 </td>
                                 <td style="width: 25%;">
-                                    <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex;padding-top:26px;padding-bottom:26px;">
+                                    <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex;">
                                         <div>
                                                 <div class="h1-dashboard">
                                                     <?php    echo $schedulerow ->num_rows  ?>
@@ -217,7 +218,6 @@
                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/session-iceblue.svg');"></div>
                                     </div>
                                 </td>
-                                
                             </tr>
                         </table>
                     </center>
@@ -234,7 +234,7 @@
                         <table width="100%" border="0" class="dashbord-tables">
                             <tr>
                                 <td>
-                                    <p style="padding:10px;padding-left:20px;padding-top:0;padding-bottom:0;font-size:20px;font-weight:700;color:var(--primarycolor);">
+                                    <p style="padding:10px;padding-left:35px;padding-top:0;padding-bottom:0;font-size:20px;font-weight:700;color:var(--primarycolor);">
                                         <u>Upcoming Appointments until Next <?php  
                                         echo date("l",strtotime("+1 week"));
                                         ?>
@@ -247,7 +247,7 @@
 
                                 </td>
                                 <td>
-                                    <p style="padding:10px;padding-left:20px;padding-bottom:0;padding-top:0;font-size:20px;font-weight:700;color:var(--primarycolor);">
+                                    <p style="padding:10px;padding-left:35px;padding-bottom:0;padding-top:0;font-size:20px;font-weight:700;color:var(--primarycolor);">
                                         <u>Upcoming Sessions until Next <?php  
                                         echo date("l",strtotime("+1 week"));
                                         ?>
