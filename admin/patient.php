@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
-        
+    <link rel="icon" href="../img/healthlogo.png" type="image/x-icon">
     <title>Patients</title>
     <style>
         .popup{
@@ -24,16 +24,16 @@
     //learn from w3schools.com
 
     session_start();
-
     if(isset($_SESSION["user"])){
         if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
             header("location: ../login.php");
+        }else{
+            $useremail=$_SESSION["user"];
         }
 
     }else{
         header("location: ../login.php");
     }
-    
     
 
     //import database
@@ -53,7 +53,7 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
+                                    <p class="profile-subtitle"><?php echo substr($useremail,0,22)?></p>
                                 </td>
                             </tr>
                             <tr>
@@ -97,7 +97,7 @@
                 <tr >
                     <td width="13%">
 
-                    <a href="patient.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                    <a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
                         
                     </td>
                     <td>
@@ -403,10 +403,8 @@
                                     <a href="patient.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
                                     <!-- Modify the button to remove the href attribute and add an onclick attribute -->
                                     <a href="prescription.php?id=<?php echo $id; ?>&name=<?php echo urlencode($name); ?>&email=<?php echo urlencode($email); ?>">
-                                    <input type="button" value="UPLOAD" class="login-btn btn-primary-soft btn">
-                                
-                                
-                                    </a>
+                                    <input type="button" value="UPLOAD REPORT" class="login-btn btn-primary-soft btn">
+                                   
                                                                     
                                 </td>
                 

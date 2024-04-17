@@ -83,7 +83,7 @@
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-session">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Schedule Appointment</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
@@ -118,7 +118,7 @@
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >
                     <td width="13%">
-                        <a href="doctors.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                        <a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
                     </td>
                     <td>
                         
@@ -250,14 +250,14 @@
                                     $spcil_array= $spcil_res->fetch_assoc();
                                     $spcil_name=$spcil_array["sname"];
                                     echo '<tr>
-                                        <td> &nbsp;'.
+                                        <td style="text-align: center;"> &nbsp;'.
                                         substr($name,0,30)
                                         .'</td>
                                         <td>
-                                        '.substr($email,0,20).'
+                                        '.substr($email,0,30).'
                                         </td>
                                         <td>
-                                            '.substr($spcil_name,0,20).'
+                                            '.substr($spcil_name,0,40).'
                                         </td>
 
                                         <td>
@@ -265,8 +265,7 @@
                                         
                                         <a href="?action=view&id='.$docid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
                                        &nbsp;&nbsp;&nbsp;
-                                       <a href="?action=session&id='.$docid.'&name='.$name.'"  class="non-style-link"><button  class="btn-primary-soft btn button-icon menu-icon-session-active"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Sessions</font></button></a>
-                                        </div>
+                                       </div>
                                         </td>
                                     </tr>';
                                     
@@ -341,10 +340,6 @@
                     <center>
                         <h2></h2>
                         <a class="close" href="doctors.php">&times;</a>
-                        <div class="content">
-                            eDoc Web App<br>
-                            
-                        </div>
                         <div style="display: flex;justify-content: center;">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
                         

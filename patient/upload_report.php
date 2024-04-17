@@ -61,8 +61,8 @@
                     </td>
                 </tr>
                 <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-home menu-active menu-icon-home-active" >
-                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Home</p></a></div></a>
+                    <td class="menu-btn menu-icon-home" >
+                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Home</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
@@ -73,7 +73,7 @@
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-session">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Schedule Appointment</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
@@ -87,8 +87,8 @@
                     </td>
                 </tr>
                 <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-report">
-                        <a href="upload_report.html" class="non-style-link-menu"><div><p class="menu-text">Upload Report</p></a></div>
+                    <td class="menu-btn menu-icon-report ">
+                        <a href="upload_report.html" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Upload Report</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
@@ -104,12 +104,14 @@
                 
             </table>
         </div>
-    <h2>Upload Clinical Report</h2><br> 
+    <div><h2 style="padding: 20px;">Upload Clinical Report</h2></div>
+    <div style="text-align: left; padding-top: 150px; size: 150px;">
     <form action="upload_process.php" method="post" enctype="multipart/form-data">
-    <label for="report" class="file-label"><br><br><br>Select PDF File:</label><br>
+    <label for="report" >Select PDF File:</label><br>
     <input type="file" id="report" name="report" accept=".pdf"><br><br>
     <input type="submit" value="Upload Report">
-</form>
+    </div>
+    </form>
 
     
 </body>

@@ -1,5 +1,5 @@
 body{
-    background-image: url(../img/img9.jpg);
+    background-image: url(../img/img9.jpeg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -36,7 +36,7 @@ table{
 }
 
 .sub-text2{
-    color: rgba(255, 255, 255, 0.5);
+    color: #fff;
     font-size: 17px;
     line-height: 27px;
     font-weight: 400;

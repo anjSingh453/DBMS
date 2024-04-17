@@ -7,7 +7,6 @@ $dbname = "edoc"; // Change this to your database name
 session_start();
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -27,8 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $useremail = $_SESSION["email"];
 
     // Prepare SQL statement with placeholders
-    $sql = "INSERT INTO users (pname, pid, phone, department, date, time, message, pemail)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (pname, pid, phone, department, date, time, current, message, pemail)
+            VALUES (?, ?, ?, ?, ?, ?, NOW(), ?, ?)";
     
     // Prepare and bind parameters
     $stmt = $conn->prepare($sql);
@@ -46,5 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Close connection
-$conn->close();
+$conn->close(); 
+header("refresh:1;url=index.php");
 ?>

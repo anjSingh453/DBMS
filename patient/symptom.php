@@ -74,7 +74,7 @@
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-session">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Schedule Appointment</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
@@ -106,10 +106,10 @@
             </table>
         </div>
         
-        <div class="dash-body">
+        <div class="dash-body" style="text-align: center;">
         
     
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" style="text-align:left;padding-left:50px;padding-top:120px;">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" style="text-align:center;padding-left:50px;padding-top:120px;">
             <label for="symptoms"><b>What symptoms are you facing? Share with us:</b></label><br><br><br>
             <textarea id="symptoms" name="symptoms" rows="10" cols="50"></textarea><br>
             <input type="submit" value="Submit"> <br> <br>

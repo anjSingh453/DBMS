@@ -231,125 +231,92 @@ button {
 
         
 
+<a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
 
-
-        <div class="dash-body">
-
-
-        
-            <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
-                <tr >
-                    <td width="13%" >
-                    <a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
-                    </td>
-                     <td >
-                        <form action="" method="post" class="header-search">
-                            <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Doctor name or Email or Date (YYYY-MM-DD)" list="doctors" value="<?php  echo $insertkey ?>">&nbsp;&nbsp;
-                             <?php
-                                echo '<datalist id="doctors">';
-                                $list11 = $database->query("select DISTINCT * from  doctor;");
-                                $list12 = $database->query("select DISTINCT * from  schedule GROUP BY title;");
-
-                                for ($y=0;$y<$list11->num_rows;$y++) {
-                                    $row00=$list11->fetch_assoc();
-                                    $d=$row00["docname"];
-                                    echo "<option value='$d'><br/>";
-                                }
-
-                                for ($y=0;$y<$list12->num_rows;$y++) {
-                                    $row00=$list12->fetch_assoc();
-                                    $d=$row00["title"];
-                                    if ($d != "Test Session") { 
-                                        echo "<option value='$d'><br/>";
-                                    }
-                                }
-                                echo ' </datalist>';
-                            ?>
-
-                            
-                            <input type="Submit" value="Search" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
-                        </form>
-                    </td>
-                    <td width="15%">
-                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            Today's Date
-                        </p>
-                        <p class="heading-sub12" style="padding: 0;margin: 0;">
-                            <?php 
-                                echo $today;
-                            ?>
-                        </p>
-                    </td>
-
-                    
-                    <td width="10%">
-                        <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td colspan="4" style="padding-top:10px;width: 100%;" >
-                        <p class="heading-main12" style="margin-left: 45px;font-size:22px;color:rgb(49, 49, 49)"><?php echo $q.$insertkey.$q ; ?> </p>
-                    </td>
-                </tr>
-                
                 <tr>
                     <td colspan="4">
                         <center>
 
                         <div class= "container1"> 
-      
-    <form action="login.php" method="post">
-        <h2>APPOINTMENT FORM</h2>
-        <?php if(isset($_GET['error'])) {?>
-            <p class="error"><?php echo $_GET['error'];?></p>
-        <?php } ?>
+                        <form action="submit_history.php" method="post">
+    <h2>MEDICAL HISTORY FORM</h2>
+    <?php if(isset($_GET['error'])) {?>
+        <p class="error"><?php echo $_GET['error'];?></p>
+    <?php } ?>
 
-    
-     <!--   <input type="text" name="uname" required><br><br>
+    <label for="chronic_conditions">Chronic Conditions:</label>
+    <textarea id="chronic_conditions" name="chronic_conditions" cols="30" rows="2"></textarea><br>
 
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password"><br><br>
+    <label for="allergies">Allergies:</label>
+    <textarea id="allergies" name="allergies" cols="30" rows="2"></textarea><br>
 
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required><br><br> -->
+    <label for="surgeries">Surgeries:</label>
+    <textarea id="surgeries" name="surgeries" cols="30" rows="2"></textarea><br>
 
-        <label for="department" style="color: black;">Department:</label>
-        <select id="department" name="department" required style="color: black;">
-        <option value="">-- Select Department --</option>
-        <?php 
-            $list11 = $database->query("select sname from  specialties order by sname asc;");
-        
-                                        for ($y=0;$y<$list11->num_rows;$y++){
-                                            $row00=$list11->fetch_assoc();
-                                            $sn=$row00["sname"];
-                                            echo "<option value=".$sn.">$sn</option><br/>";
-                                        };
-        ?>
-            
-            
-        </select><br><br>
+    <label for="medications">Medications:</label>
+    <textarea id="medications" name="medications" cols="30" rows="2"></textarea><br>
 
-        <label for="date">Preferred Date:</label>
-        <input type="date" id="date" name="date" min= "<?php echo $today; ?>"required><br><br>
+    <label for="family_illness_history">Family Illness History:</label>
+    <textarea id="family_illness_history" name="family_illness_history" cols="30" rows="2"></textarea><br>
 
-        <label for="time">Preferred Time:</label>
-        <input type="time" id="time" name="time" required><br><br>
+    <label for="smoking_status">Smoking Status:</label>
+    <select id="smoking_status" name="smoking_status"required style="color: black;>
+        <option value="Never Smoked">Never Smoked</option>
+        <option value="Former Smoker">Former Smoker</option>
+        <option value="Current Smoker">Current Smoker</option>
+    </select><br>
 
-        <label for="message">Additional Information (optional):</label>
-        <textarea id="message" name="message" rows="4"></textarea><br>
+    <label for="alcohol_consumption">Alcohol Consumption:</label>
+    <select id="alcohol_consumption" name="alcohol_consumption"required style="color: black;>
+        <option value="Never">Never</option>
+        <option value="Occasional">Occasional</option>
+        <option value="Regular">Regular</option>
+    </select><br>
 
-        <!--<button type="submit">Submit Appointment Request</button>-->
-        <input type="submit" value="Submit Appointment Request" class="logout-btn btn-primary-soft btn"><br>
-                    <?php
-                
-                    /* echo $username , "<br>"; echo $usertel,"<br>"; 
-                        $_SESSION["name"]=$username;
-                        $_SESSION["tel"]=$usertel;
-                        $_SESSION["pid"]=$userid;
-                        $_SESSION["email"]=$useremail;*/
-                        ?>
-                    </form> 
+    <label for="present_complaints">Present Complaints:</label>
+    <textarea id="present_complaints" name="present_complaints" cols="30" rows="2"></textarea><br>
+
+    <label for="severity">Severity:</label>
+    <select id="severity" name="severity"required style="color: black;>
+        <option value="Mild">Mild</option>
+        <option value="Moderate">Moderate</option>
+        <option value="Severe">Severe</option>
+    </select><br>
+
+    <label for="blood_type">Blood Type:</label>
+    <select id="blood_type" name="blood_type"required style="color: black;>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+    </select><br>
+
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" name="height" min="0"><br>
+
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" name="weight" min="0"><br>
+
+    <label for="blood_pressure">Blood Pressure:</label>
+    <input type="text" id="blood_pressure" name="blood_pressure"><br>
+
+    <label for="heart_rate">Heart Rate (bpm):</label>
+    <input type="number" id="heart_rate" name="heart_rate" min="0"><br>
+
+    <label for="respiratory_rate">Respiratory Rate (bpm):</label>
+    <input type="number" id="respiratory_rate" name="respiratory_rate" min="0"><br>
+
+    <label for="last_checkup_date">Date of Last Checkup:</label>
+    <input type="date" id="last_checkup_date" name="last_checkup_date"><br>
+
+    <input type="submit" value="Submit Medical History">
+</form>
+
+ 
                     </div>
                            
                         </center>

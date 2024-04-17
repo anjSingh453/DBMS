@@ -53,15 +53,16 @@
 </head>
 <body>
 <a href="index.html" class="link-box"><-  Back to Home</a>
-<div style="text-align: center;">
-<h1>Health Sphere Hospital</h1>
-
+<div style="text-align: center;"> <br><br>
+<h1 style= "background-color: #fff; width: 500px; text-align: center; margin: 0 auto;">Health Sphere Hospital</h1>
+<br><br>
 <div class="container">
     <div class="contact-info">
-        <h2>Contact Information:</h2>
-        <p><strong>Phone Number:</strong> <span>123-456-7890</span></p>
-        <p><strong>Email:</strong> <a href="mailto:info@healthspherehospital.com">info@healthspherehospital.com</a></p>
-        <p><strong>Address:</strong> 123 Hospital Street, City, Country</p>
+        
+        <h2>Contact Information:</h2> <br>
+        <p><strong>Phone Number:</strong> <span>888-298-0499, 636-468-7330</span><br></p>
+        <p><strong>Email:</strong> <a href="mailto:contactus@healthspherehospital.com">info@healthspherehospital.com</a></p>
+        <p><strong>Address:</strong> Health Sphere Hospital, Khokhra Circle, Maninagar, Ahmedabad, Gujarat 380008</p>
     </div>
 
     <div class="location">

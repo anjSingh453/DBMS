@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
-        
+    <link rel="icon" href="../img/healthlogo.png" type="image/x-icon">
+    
     <title>Appointments</title>
     <style>
         .popup{
@@ -16,8 +17,8 @@
         .sub-table{
             animation: transitionIn-Y-bottom 0.5s;
         }
-</style>
-</head>
+    </style>
+    </head>
 <body>
     <?php
 
@@ -90,6 +91,13 @@
                         <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">My Patients</p></a></div>
                     </td>
                 </tr>
+                <tr class="menu-row">
+                <td class="menu-btn menu-icon-report">
+                    <a href="clinical_reports.php" class="non-style-link-menu">
+                        <div><p class="menu-text">Clinical Reports</p></div>
+                    </a>
+                </td>
+            </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
                         <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
@@ -149,60 +157,11 @@
                     
                 </tr>
                 <tr>
-                    <td colspan="4" style="padding-top:0px;width: 100%;" >
-                        <center>
-                        <table class="filter-container" border="0" >
-                        <tr>
-                           <td width="10%">
-
-                           </td> 
-                        <td width="5%" style="text-align: center;">
-                        Date:
-                        </td>
-                        <td width="30%">
-                        <form action="" method="post">
-                            
-                            <input type="date" name="sheduledate" id="date" class="input-text filter-container-items" style="margin: 0;width: 95%;">
-
-                        </td>
-                        
-                    <td width="12%">
-                        <input type="submit"  name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
-                        </form>
-                    </td>
-
-                    </tr>
-                            </table>
-
-                        </center>
-                    </td>
+                    
                     
                 </tr>
                 
-                <?php
-
-
-                    $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  doctor.docid=$userid ";
-                         
-                    if($_POST){
-                        //print_r($_POST);
-                        
-
-
-                        
-                        if(!empty($_POST["sheduledate"])){
-                            $sheduledate=$_POST["sheduledate"];
-                            $sqlmain.=" and schedule.scheduledate='$sheduledate' ";
-                        };
-
-                        
-
-                        //echo $sqlmain;
-
-                    }
-
-
-                ?>
+            
                   
                 <tr>
                    <td colspan="4">
@@ -212,18 +171,19 @@
                         <thead>
                         <tr>
                                 <th class="table-headin">
-                                    Patient name
-                                </th>
-                                <th class="table-headin">
                                     
                                     Appointment number
                                     
                                 </th>
+                                <th class="table-headin">
+                                    Patient name
+                                </th>
+                                
                                
                                 <th class="table-headin">
                                     
                                 
-                                    Session Title
+                                    Patient Phone
                                     
                                     </th>
                                 
@@ -233,15 +193,6 @@
                                     
                                 </th>
                                 
-                                <th class="table-headin">
-                                    
-                                    Appointment Date
-                                    
-                                </th>
-                                
-                                <th class="table-headin">
-                                    
-                                    Events
                                     
                                 </tr>
                         </thead>
@@ -250,7 +201,22 @@
                             <?php
 
                                 
-                                $result= $database->query($sqlmain);
+                                $sql = "SELECT DISTINCT users.pname, users.ID, users.phone, users.date, users.time FROM doctor JOIN specialties ON doctor.specialties = specialties.id JOIN users ON specialties.sname = users.department WHERE doctor.docid = $userid;";
+                                $servername = "localhost"; // Change this to your database server
+                                $username = "root"; // Change this to your database username
+                                $password = ""; // Change this to your database password
+                                $dbname = "edoc"; // Change this to your database name
+                                
+                                // Create connection
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+                                
+                                // Check connection
+                                if ($conn->connect_error) {
+                                    die("Connection failed: " . $conn->connect_error);
+                                }
+                                // Execute the query
+                                $result = $conn->query($sql);
+
 
                                 if($result->num_rows==0){
                                     echo '<tr>
@@ -270,49 +236,17 @@
                                     
                                 }
                                 else{
-                                for ( $x=0; $x<$result->num_rows;$x++){
-                                    $row=$result->fetch_assoc();
-                                    $appoid=$row["appoid"];
-                                    $scheduleid=$row["scheduleid"];
-                                    $title=$row["title"];
-                                    $docname=$row["docname"];
-                                    $scheduledate=$row["scheduledate"];
-                                    $scheduletime=$row["scheduletime"];
-                                    $pname=$row["pname"];
-                                    $apponum=$row["apponum"];
-                                    $appodate=$row["appodate"];
-                                    echo '<tr >
-                                        <td style="font-weight:600;"> &nbsp;'.
-                                        
-                                        substr($pname,0,25)
-                                        .'</td >
-                                        <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
-                                        '.$apponum.'
-                                        
-                                        </td>
-                                        <td>
-                                        '.substr($title,0,15).'
-                                        </td>
-                                        <td style="text-align:center;;">
-                                            '.substr($scheduledate,0,10).' @'.substr($scheduletime,0,5).'
-                                        </td>
-                                        
-                                        <td style="text-align:center;">
-                                            '.$appodate.'
-                                        </td>
-
-                                        <td>
-                                        <div style="display:flex;justify-content: center;">
-                                        
-                                        <!--<a href="?action=view&id='.$appoid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
-                                       &nbsp;&nbsp;&nbsp;-->
-                                       <a href="?action=drop&id='.$appoid.'&name='.$pname.'&session='.$title.'&apponum='.$apponum.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel</font></button></a>
-                                       &nbsp;&nbsp;&nbsp;</div>
-                                        </td>
-                                    </tr>';
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>";
+                                        echo "<td style='text-align: center; padding-top: 10px;'>" . $row["ID"] . "</td>";
+                                        echo "<td style='text-align: center; padding-top: 10px;'>" . $row["pname"] . "</td>";
+                                        echo "<td style='text-align: center; padding-top: 10px;'>" . $row["phone"] . "</td>";
+                                        echo "<td style='text-align: center; padding-top: 10px;'>" . $row["date"] . " " . $row["time"] . "</td>";
+                                        echo "</tr>";
+                                    }
                                     
                                 }
-                            }
+                            
                                  
                             ?>
  

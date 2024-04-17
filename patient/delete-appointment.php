@@ -1,31 +1,44 @@
 <?php
 
-    session_start();
+session_start();
 
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
-            header("location: ../login.php");
-        }
-
-    }else{
+if(isset($_SESSION["user"]) && $_SESSION['usertype'] === 'p') {
+    if(empty($_SESSION["user"])) {
         header("location: ../login.php");
+        exit; // Add exit here to prevent further execution
     }
-    
-    
-    if($_GET){
-        //import database
-        include("../connection.php");
-        $id=$_GET["id"];
-        //$result001= $database->query("select * from schedule where scheduleid=$id;");
-        //$email=($result001->fetch_assoc())["docemail"];
-        $sql= $database->query("delete from appointment where appoid='$id';");
-        $stmt = $database->prepare($sqlmain);
-        $stmt->bind_param("i",$id);
-        $stmt->execute();
-        //$sql= $database->query("delete from doctor where docemail='$email';");
-        //print_r($email);
-        header("location: appointment.php");
-    }
+} else {
+    header("location: ../login.php");
+    exit; // Add exit here to prevent further execution
+}
 
+if(isset($_GET['id'])) {
+    // Import database
+    include("../connection.php");
+    $id = $_GET['id'];
+    
+    // Prepare SQL statement to delete the record from the users table
+    $sql = "DELETE FROM users WHERE ID = ?";
+    
+    // Prepare the statement
+    $stmt = $database->prepare($sql);
+    
+    // Bind parameters
+    $stmt->bind_param("i", $id);
+    
+    // Execute the statement
+    $stmt->execute();
+    
+    // Check for errors
+    if ($stmt->errno) {
+        echo "Error: " . $stmt->error;
+    } else {
+        // Redirect to the appointment page after deletion
+        header("location: appointment.php");
+        exit; // Add exit here to prevent further execution
+    }
+} else {
+    echo "Error: Appointment ID not provided.";
+}
 
 ?>

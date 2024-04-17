@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/healthlogo.png" type="image/x-icon">  
+    <link rel="stylesheet" href="../css/main.css">  
+    <link rel="stylesheet" href="../css/admin.css">    
+
     <title>View My Prescription</title>
 </head>
 <body>
+    <a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                    
     <h1>Prescription of </h1>
 
-    <?php
+    <h3><?php
     session_start();
     // Include database connection
     $servername = "localhost"; // Change this to your database server
@@ -35,9 +41,9 @@
           $report_pdf = $row['prescription_PDF'];
             echo "PRESCRIPTION_ID: ",$prescription_id,"<br>";
             echo "PATIENT_ID: ",$patient_id,"<br>";
-            echo "PATIENT_NAME: ",$pname,"<br>";
+            
 
-            echo "<object data='data:application/pdf;base64,".base64_encode($report_pdf)."' type='application/pdf' width='100%' height='400px'><p>Your browser does not support PDFs. Please download the PDF to view it: <a href='data:application/octet-stream;base64,".base64_encode($report_pdf)."'>Download PDF</a></p></object>";
+            echo "<object data='data:application/pdf;base64,".base64_encode($report_pdf)."' type='application/pdf' width='100%' height='600px'><p>Your browser does not support PDFs. Please download the PDF to view it: <a href='data:application/octet-stream;base64,".base64_encode($report_pdf)."'>Download PDF</a></p></object>";
             echo "<br>";echo "<br>";echo "<br>";
         }
     } else {
@@ -46,7 +52,7 @@
 
     // Close database connection
     $conn->close();
-    ?>
+    ?> <h3>
 
 </body>
 </html>

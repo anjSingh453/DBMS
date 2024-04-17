@@ -6,8 +6,34 @@
     <title>View Clinical Reports</title>
 </head>
 <body>
-    <h1>Clinical Reports</h1>
+    <h1>Clinical Reports of your Patients</h1>
+    <?php
 
+    //learn from w3schools.com
+
+    session_start();
+
+    if(isset($_SESSION["user"])){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='d'){
+            header("location: ../login.php");
+        }else{
+            $useremail=$_SESSION["user"];
+        }
+
+    }else{
+        header("location: ../login.php");
+    }
+
+
+
+    //import database
+    include("../connection.php");
+    $userrow = $database->query("select * from doctor where docemail='$useremail'");
+    $userfetch=$userrow->fetch_assoc();
+    $userid= $userfetch["docid"];
+    $username=$userfetch["docname"];
+    //echo $userid;
+    ?>
     <?php
     // Include database connection
     $servername = "localhost"; // Change this to your database server
@@ -17,8 +43,19 @@
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    // Query to fetch all reports
-    $sql = "SELECT report_id,pid,pname, report_pdf,uploaded_at,patient_email FROM clinical_report";
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Query to fetch reports for the doctor's patients
+    $sql = "SELECT c.report_id, c.pid, c.pname, c.report_pdf, c.uploaded_at, c.patient_email 
+            FROM clinical_report c
+            INNER JOIN patient p ON c.pid = p.pid
+            INNER JOIN users u ON p.pid = u.pid
+            ";
+
     $result = $conn->query($sql);
 
     // Check if there are reports
@@ -26,19 +63,18 @@
         // Output iframe for each report
         while ($row = $result->fetch_assoc()) {
             $report_id = $row['report_id'];
-            $patient_id=$row['pid'];
-            $pname=$row['pname'];
-            $uploaded=$row['uploaded_at'];
-            $pemail=$row['patient_email'];
-            //$report_name = $row['report_name'];
-            $report_pdf = $row['report_pdf'];
-            echo "REPORT_ID: ",$report_id,"<br>";
-            echo "PATIENT_ID: ",$patient_id,"<br>";
-            echo "PATIENT_NAME: ",$pname,"<br>";
-            echo "UPLOADED_AT: ",$uploaded,"<br>";
-            echo "PATIENT_EMAIL: ",$pemail,"<br>";
-            //echo "<h2>Report $report_id: $report_name</h2>";
-            echo "<object data='data:application/pdf;base64,".base64_encode($report_pdf)."' type='application/pdf' width='100%' height='400px'><p>Your browser does not support PDFs. Please download the PDF to view it: <a href='data:application/octet-stream;base64,".base64_encode($report_pdf)."'>Download PDF</a></p></object>";
+            $patient_id = $row['pid'];
+            $pname = $row['pname'];
+            $uploaded = $row['uploaded_at'];
+            $pemail = $row['patient_email'];
+
+            echo "REPORT_ID: ", $report_id, "<br>";
+            echo "PATIENT_ID: ", $patient_id, "<br>";
+            echo "PATIENT_NAME: ", $pname, "<br>";
+            echo "UPLOADED_AT: ", $uploaded, "<br>";
+            echo "PATIENT_EMAIL: ", $pemail, "<br>";
+
+            echo "<object data='data:application/pdf;base64," . base64_encode($row['report_pdf']) . "' type='application/pdf' width='100%' height='400px'><p>Your browser does not support PDFs. Please download the PDF to view it: <a href='data:application/octet-stream;base64," . base64_encode($row['report_pdf']) . "'>Download PDF</a></p></object>";
             echo "<br>";echo "<br>";echo "<br>";
         }
     } else {

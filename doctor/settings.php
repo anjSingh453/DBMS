@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
-        
+    <link rel="icon" href="../img/healthlogo.png" type="image/x-icon">
+    
 
 
     <title>Settings</title>
@@ -100,6 +101,13 @@
                         <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">My Patients</p></a></div>
                     </td>
                 </tr>
+                <tr class="menu-row">
+            <td class="menu-btn menu-icon-report">
+                <a href="clinical_reports.php" class="non-style-link-menu">
+                    <div><p class="menu-text">Clinical Reports</p></div>
+                    </a>
+                </td>
+            </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings  menu-active menu-icon-settings-active">
                         <a href="settings.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Settings</p></a></div>

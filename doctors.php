@@ -30,7 +30,10 @@ include 'connection.php';
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-image: url(img/bg8.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
         }
         .container {
             max-width: 800px;
@@ -38,7 +41,6 @@ include 'connection.php';
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
-            background-image: url('img/b4.jpg');
 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }

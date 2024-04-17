@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
-        
+    <link rel="icon" href="../img/healthlogo.png" type="image/x-icon">
     <title>Doctors</title>
     <style>
         .popup{
@@ -28,6 +28,8 @@
     if(isset($_SESSION["user"])){
         if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
             header("location: ../login.php");
+        }else{
+            $useremail=$_SESSION["user"];
         }
 
     }else{
@@ -53,7 +55,7 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
+                                    <p class="profile-subtitle"><?php echo substr($useremail,0,22)?></p>
                                 </td>
                             </tr>
                             <tr>
@@ -97,7 +99,7 @@
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >
                     <td width="13%">
-                        <a href="doctors.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                        <a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
                     </td>
                     <td>
                         
@@ -501,11 +503,7 @@
                                             $id00=$row00["id"];
                                             echo "<option value=".$id00.">$sn</option><br/>";
                                         };
-        
-        
-        
-                                        
-                        echo     '       </select><br>
+                                    echo '</select><br>
                                 </td>
                             </tr>
                             <tr>
@@ -515,16 +513,16 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="password" name="password" class="input-text" placeholder="Defind a Password" required><br>
+                                    <input type="password" name="password" class="input-text" placeholder="Define a Password" required><br>
                                 </td>
                             </tr><tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="cpassword" class="form-label">Conform Password: </label>
+                                    <label for="cpassword" class="form-label">Confirm Password: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="password" name="cpassword" class="input-text" placeholder="Conform Password" required><br>
+                                    <input type="password" name="cpassword" class="input-text" placeholder="Confirm Password" required><br>
                                 </td>
                             </tr>
                             

@@ -56,7 +56,7 @@
 
 
     //TODO
-    $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  patient.pid=$userid ";
+ /*   $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  patient.pid=$userid ";
 
     if($_POST){
         //print_r($_POST);
@@ -76,7 +76,22 @@
     }
 
     $sqlmain.="order by appointment.appodate  asc";
-    $result= $database->query($sqlmain);
+    $result= $database->query($sqlmain);*/
+    $servername = "localhost"; // Change this to your database server
+    $username = "root"; // Change this to your database username
+    $password = ""; // Change this to your database password
+    $dbname = "edoc"; // Change this to your database name
+    
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT department, date, time FROM users WHERE pid = $userid";
+   
+    $result2 = $conn->query($sql);
     ?>
     <div class="container">
         <div class="menu">
@@ -177,20 +192,10 @@
 
 
                 </tr>
-               
-                <!-- <tr>
-                    <td colspan="4" >
-                        <div style="display: flex;margin-top: 40px;">
-                        <div class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49);margin-top: 5px;">Schedule a Session</div>
-                        <a href="?action=add-session&id=none&error=0" class="non-style-link"><button  class="login-btn btn-primary btn button-icon"  style="margin-left:25px;background-image: url('../img/icons/add.svg');">Add a Session</font></button>
-                        </a>
-                        </div>
-                    </td>
-                </tr> -->
                 <tr>
                     <td colspan="4" style="padding-top:10px;width: 100%;" >
                     
-                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">My Bookings (<?php echo $result->num_rows; ?>)</p>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">My Bookings (<?php echo $result2->num_rows; ?>)</p>
                     </td>
                     
                 </tr>
@@ -199,23 +204,7 @@
                         <center>
                         <table class="filter-container" border="0" >
                         <tr>
-                           <td width="10%">
-
-                           </td> 
-                        <td width="5%" style="text-align: center;">
-                        Date:
-                        </td>
-                        <td width="30%">
-                        <form action="" method="post">
-                            
-                            <input type="date" name="sheduledate" id="date" class="input-text filter-container-items" style="margin: 0;width: 95%;">
-
-                        </td>
-                        
-                    <td width="12%">
-                        <input type="submit"  name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
-                        </form>
-                    </td>
+                           
 
                     </tr>
                             </table>
@@ -232,14 +221,45 @@
                        <center>
                         <div class="abc scroll">
                         <table width="93%" class="sub-table scrolldown" border="0" style="border:none">
-                        
-                        <tbody>
-                        
-                            <?php
-
+                        <thead>
+                        <tr>
+                                <th class="table-headin">
+                                    Session Date & Time
+                                </th>
+                                <th class="table-headin">
+                                    
+                                    Doctor
+                                    
+                                </th>
+                               
                                 
+                                <th class="table-headin">
+                                    Department
+                                </th>
                                 
-
+                                <th class="table-headin">
+                                    
+                                    Events
+                                    
+                                </tr>
+                        </thead>
+                        `<tbody>
+                                <?php
+                                $servername = "localhost"; // Change this to your database server
+                                $username = "root"; // Change this to your database username
+                                $password = ""; // Change this to your database password
+                                $dbname = "edoc"; // Change this to your database name
+                                
+                                // Create connection
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+                                
+                                $currentdate = date('Y-m-d');
+                                $sql = "SELECT ID, department, date, time FROM users WHERE pid = $userid";
+                            
+                                // Execute SQL query
+                                $result = $conn->query($sql);
+                                // Loop through each record in the result set
+                                
                                 if($result->num_rows==0){
                                     echo '<tr>
                                     <td colspan="7">
@@ -257,110 +277,72 @@
                                     </tr>';
                                     
                                 }
-                                else{
+                                else {
 
-                                    for ( $x=0; $x<($result->num_rows);$x++){
-                                        echo "<tr>";
-                                        for($q=0;$q<3;$q++){
-                                            $row=$result->fetch_assoc();
-                                            if (!isset($row)){
-                                            break;
-                                            };
-                                            $scheduleid=$row["scheduleid"];
-                                            $title=$row["title"];
-                                            $docname=$row["docname"];
-                                            $scheduledate=$row["scheduledate"];
-                                            $scheduletime=$row["scheduletime"];
-                                            $apponum=$row["apponum"];
-                                            $appodate=$row["appodate"];
-                                            $appoid=$row["appoid"];
-    
-                                            if($scheduleid==""){
-                                                break;
-                                            }
-    
-                                            echo '
-                                            <td style="width: 25%;">
-                                                    <div  class="dashboard-items search-items"  >
-                                                    
-                                                        <div style="width:100%;">
-                                                        <div class="h3-search">
-                                                                    Booking Date: '.substr($appodate,0,30).'<br>
-                                                                    Reference Number: OC-000-'.$appoid.'
-                                                                </div>
-                                                                <div class="h1-search">
-                                                                    '.substr($title,0,21).'<br>
-                                                                </div>
-                                                                <div class="h3-search">
-                                                                    Appointment Number:<div class="h1-search">0'.$apponum.'</div>
-                                                                </div>
-                                                                <div class="h3-search">
-                                                                    '.substr($docname,0,30).'
-                                                                </div>
-                                                                
-                                                                
-                                                                <div class="h4-search">
-                                                                    Scheduled Date: '.$scheduledate.'<br>Starts: <b>@'.substr($scheduletime,0,5).'</b> (24h)
-                                                                </div>
-                                                                <br>
-                                                                <a href="?action=drop&id='.$appoid.'&title='.$title.'&doc='.$docname.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">Cancel Booking</font></button></a>
-                                                        </div>
-                                                                
-                                                    </div>
-                                                </td>';
-    
+                                    for ($x = 0; $x < $result->num_rows; $x++) {
+                                        // Start a new row for the first record and every third record thereafter
+                                        if ($x % 3 === 0) {
+                                            echo "<tr>";
                                         }
-                                        echo "</tr>";
-                           
-                                // for ( $x=0; $x<$result->num_rows;$x++){
-                                //     $row=$result->fetch_assoc();
-                                //     $appoid=$row["appoid"];
-                                //     $scheduleid=$row["scheduleid"];
-                                //     $title=$row["title"];
-                                //     $docname=$row["docname"];
-                                //     $scheduledate=$row["scheduledate"];
-                                //     $scheduletime=$row["scheduletime"];
-                                //     $pname=$row["pname"];
-                                //     
-                                //     
-                                //     echo '<tr >
-                                //         <td style="font-weight:600;"> &nbsp;'.
-                                        
-                                //         substr($pname,0,25)
-                                //         .'</td >
-                                //         <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
-                                //         '.$apponum.'
-                                        
-                                //         </td>
-                                //         <td>
-                                //         '.substr($title,0,15).'
-                                //         </td>
-                                //         <td style="text-align:center;;">
-                                //             '.substr($scheduledate,0,10).' @'.substr($scheduletime,0,5).'
-                                //         </td>
-                                        
-                                //         <td style="text-align:center;">
-                                //             '.$appodate.'
-                                //         </td>
 
-                                //         <td>
-                                //         <div style="display:flex;justify-content: center;">
-                                        
-                                //         <!--<a href="?action=view&id='.$appoid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
-                                //        &nbsp;&nbsp;&nbsp;-->
-                                //        <a href="?action=drop&id='.$appoid.'&name='.$pname.'&session='.$title.'&apponum='.$apponum.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel</font></button></a>
-                                //        &nbsp;&nbsp;&nbsp;</div>
-                                //         </td>
-                                //     </tr>';
-                                    
+                                        // Fetch a row from the result set
+                                        $row = $result->fetch_assoc();
+
+                                        // Merge date and time into a single DATETIME value
+                                        $datetime = date('Y-m-d H:i:s', strtotime($row["date"] . ' ' . $row["time"]));
+
+                                        // Perform your second query to get the doctor's name
+                                        $sql2 = "SELECT DISTINCT doctor.docname
+                                                FROM doctor
+                                                JOIN specialties ON doctor.specialties = specialties.id
+                                                JOIN users ON specialties.sname = users.department
+                                                WHERE availability = 'y'";
+                                        $result2 = $conn->query($sql2);
+
+                                        // Initialize $doctorname
+                                        $doctorname = "";
+
+                                        // Check if the second query returned any rows
+                                        if ($result2 && $result2->num_rows > 0) {
+                                            // Fetch the row from the second query result
+                                            $row2 = $result2->fetch_assoc();
+                                            // Extract the doctor's name
+                                            $doctorname = $row2["docname"];
+                                        } else {
+                                            // Handle case when no rows are returned from the second query
+                                            $doctorname = "N/A";
+                                        }
+
+                                        // Extract other relevant data from the first query result
+                                        $department = $row["department"];
+                                        $appointment_id = $row["ID"];
+                                        $_SESSION["id"]=$appointment_id;
+                                        echo '<div >
+                                        <td style="text-align:center; padding-top: 10px;">
+                                        <div class="h3-search">' . $datetime . '</div></td>
+                                        <td style="text-align:center; padding-top: 10px;">
+                                        <div class="h3-search">' . $doctorname . '<br></div></td>
+                                        <td style="text-align:center; padding-top: 10px;">
+                                        <div class="h3-search">' . $department . '</div></td>
+                                        </div>
+                                        <td>'; ?>
+                                        <a href="delete-appointment.php?id= <?php echo $appointment_id; ?>" class="non-style-link">
+                                            <button class="btn-primary-soft btn button-icon btn-delete" style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;">
+                                                <font class="tn-in-text">Cancel</font>
+                                            </button>
+                                        </a>
+                                        <?php echo '</td>';
+                                        // End the row for every third record or when reaching the end of the result set
+                                        if (($x + 1) % 3 === 0 || $x === $result->num_rows - 1) {
+                                            echo "</tr>";
+                                        }
+                                    }
                                 }
-                            }
-                                 
-                            ?>
- 
+                                ?>
                             </tbody>
+                         
 
-                        </table>
+                        </table>`
                         </div>
                         </center>
                    </td> 
