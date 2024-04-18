@@ -419,7 +419,9 @@ input[type=search]:focus {
 .menu-icon-prescription{
   background-image: url('../img/icons/prescription.svg');
 }
-
+.menu-icon-hist{
+  background-image: url('../img/icons/p12.svg');
+}
 
 .menu-icon-dashbord:hover,.menu-icon-dashbord-active{
   color: var(--primarycolor);
@@ -467,7 +469,11 @@ input[type=search]:focus {
   
   background-image: url('../img/icons/settings-iceblue.svg');
 }
-
+.menu-icon-hist:hover,.menu-icon-hist-active{
+  color: var(--primarycolor);
+  
+  background-image: url('../img/icons/p12.svg');
+}
 .menu-icon-session:hover,.menu-icon-session-active{
   color: var(--primarycolor);
   

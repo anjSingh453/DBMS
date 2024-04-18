@@ -180,6 +180,7 @@
                     <td width="15%">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
                             Today's Date
+                           
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
@@ -252,7 +253,7 @@
                                 <th class="table-headin">
                                     
                                 
-                                    NIC
+                                    Aaadhar
                                     
                                 </th>
                                 <th class="table-headin">
@@ -305,6 +306,7 @@ else{
 for ( $x=0; $x<$result->num_rows;$x++){
     $row=$result->fetch_assoc();
     $pid=$row["pid"];
+    
     $name=$row["pname"];
     $email=$row["pemail"];
     $nic=$row["pnic"];
@@ -358,6 +360,7 @@ for ( $x=0; $x<$result->num_rows;$x++){
 if($_GET){
 
 $id=$_GET["id"];
+$_SESSION["PID"]=$id;
 $action=$_GET["action"];
 $sqlmain= "select * from patient where pid='$id'";
 $result= $database->query($sqlmain);
@@ -421,7 +424,7 @@ echo '
 </tr>
 <tr>
 <td class="label-td" colspan="2">
-    <label for="nic" class="form-label">NIC: </label>
+    <label for="nic" class="form-label">Aadhar: </label>
 </td>
 </tr>
 <tr>
@@ -465,6 +468,7 @@ echo '
 <tr>
 <td colspan="2">
     <a href="patient.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
+    <a href="view_history.php?id=<?php echo $id; ?>"><input type="button" value="VIEW MEDICAL HISTORY" class="login-btn btn-primary-soft btn"></a>
 
     
 </td>

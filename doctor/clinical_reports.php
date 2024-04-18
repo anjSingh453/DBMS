@@ -50,10 +50,11 @@
     }
 
     // Query to fetch reports for the doctor's patients
-    $sql = "SELECT c.report_id, c.pid, c.pname, c.report_pdf, c.uploaded_at, c.patient_email 
-            FROM clinical_report c
-            INNER JOIN patient p ON c.pid = p.pid
-            INNER JOIN users u ON p.pid = u.pid
+    $sql = "SELECT DISTINCT c.report_id, c.pid, c.pname, c.report_pdf, c.uploaded_at, c.patient_email 
+    FROM clinical_report c
+    JOIN users a ON c.pid = a.pid
+    JOIN doctor d ON a.department = d.docdept
+    WHERE d.docid = $userid AND d.availability = 'y';    
             ";
 
     $result = $conn->query($sql);
@@ -74,7 +75,7 @@
             echo "UPLOADED_AT: ", $uploaded, "<br>";
             echo "PATIENT_EMAIL: ", $pemail, "<br>";
 
-            echo "<object data='data:application/pdf;base64," . base64_encode($row['report_pdf']) . "' type='application/pdf' width='100%' height='400px'><p>Your browser does not support PDFs. Please download the PDF to view it: <a href='data:application/octet-stream;base64," . base64_encode($row['report_pdf']) . "'>Download PDF</a></p></object>";
+            echo "<object data='data:application/pdf;base64," . base64_encode($row['report_pdf']) . "' type='application/pdf' width='100%' height='500px'><p>Your browser does not support PDFs. Please download the PDF to view it: <a href='data:application/octet-stream;base64," . base64_encode($row['report_pdf']) . "'>Download PDF</a></p></object>";
             echo "<br>";echo "<br>";echo "<br>";
         }
     } else {

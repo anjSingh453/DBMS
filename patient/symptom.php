@@ -121,13 +121,55 @@
                 // Define symptoms and corresponding doctors/specialists
                 $symptom_doctor_map = array(
                     "headache" => "Neurologist",
-                    "fever" => "General Practitioner",
+                    "fever" => "Infectious Diseases", // Changed from "General Practitioner" due to possible infection-related issues
                     "cough" => "Pulmonologist",
                     "stomach pain" => "Gastroenterologist",
-                    "fatigue" => "Internal Medicine Specialist",
+                    "fatigue" => "Internal Medicine Specialist", // Changed from "General Hematology"
                     "rash" => "Dermatologist",
-                    // Add more symptoms and corresponding doctors/specialists as needed
+                    "trauma" => "Accident and Emergency Medicine",
+                    "acute medical conditions" => "Accident and Emergency Medicine",
+                    "poisoning" => "Accident and Emergency Medicine",
+                    "allergic reactions" => "Allergology",
+                    "asthma" => "Allergology",
+                    "anaphylaxis" => "Allergology",
+                    "pain management" => "Anaesthetics",
+                    "anemia" => "Biological Hematology",
+                    "bruising" => "Biological Hematology",
+                    "chest pain" => "Cardiology",
+                    "heart palpitations" => "Cardiology",
+                    "shortness of breath" => "Cardiology",
+                    "behavioral issues in children" => "Child Psychiatry",
+                    "mood swings" => "Child Psychiatry",
+                    "biological sample analysis" => "Clinical Biology",
+                    "blood chemistry abnormalities" => "Clinical Chemistry",
+                    "seizures" => "Clinical Neurophysiology",
+                    "tremors" => "Clinical Neurophysiology",
+                    "imaging for diagnosis" => "Clinical Radiology",
+                    "dental pain" => "Dental, Oral and Maxillo-Facial Surgery",
+                    "oral infections" => "Dental, Oral and Maxillo-Facial Surgery",
+                    "sexually transmitted infections" => "Dermato-Venerology",
+                    "hormone imbalances" => "Endocrinology",
+                    "diabetes" => "Endocrinology",
+                    "digestive disorders requiring surgery" => "Gastro-Enterologic Surgery",
+                    "digestive system issues" => "Gastroenterology",
+                    "bleeding disorders" => "General Hematology",
+                    "common illnesses" => "General Practice",
+                    "preventive care" => "General Practice",
+                    "surgical conditions" => "General Surgery",
+                    "pain requiring surgery" => "General Surgery",
+                    "aging-related symptoms" => "Geriatrics",
+                    "chronic conditions in the elderly" => "Geriatrics",
+                    "immune system disorders" => "Immunology",
+                    "frequent infections" => "Immunology",
+                    "infections" => "Infectious Diseases",
+                    "respiratory issues" => "Internal Medicine Specialist", // Already listed as internal medicine in fatigue case
+                    "cardiovascular issues" => "Cardiology",
+                    "gastrointestinal issues" => "Gastroenterology",
+                    "lab tests and analysis" => "Laboratory Medicine",
+                    "facial surgery" => "Maxillo-Facial Surgery",
+                    "jaw issues" => "Maxillo-Facial Surgery"
                 );
+                
 
                 // Get user input
                 if(isset($_POST['symptoms'])) {

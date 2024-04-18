@@ -259,7 +259,7 @@
                                 </th>
                                 <th class="table-headin">
                                     
-                                    Sheduled Date & Time
+                                    Scheduled Date & Time
                                     
                                 </th>
                                 <th class="table-headin">
@@ -418,12 +418,12 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nop" class="form-label">Number of Patients/Appointment Numbers : </label>
+                                    <label for="nop" class="form-label">Number of Doctors : </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="number" name="nop" class="input-text" min="0"  placeholder="The final appointment number for this session depends on this number" required><br>
+                                    <input type="number" name="nop" class="input-text" min="0"  placeholder="The final appointment time for this session depends on this number" required><br>
                                 </td>
                             </tr>
                             <tr>
@@ -586,103 +586,8 @@
                                 '.$scheduletime.'<br><br>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label"><b>Patients that Already registerd for this session:</b> ('.$result12->num_rows."/".$nop.')</label>
-                                    <br><br>
-                                </td>
-                            </tr>
-
+                        
                             
-                            <tr>
-                            <td colspan="4">
-                                <center>
-                                 <div class="abc scroll">
-                                 <table width="100%" class="sub-table scrolldown" border="0">
-                                 <thead>
-                                 <tr>   
-                                        <th class="table-headin">
-                                             Patient ID
-                                         </th>
-                                         <th class="table-headin">
-                                             Patient name
-                                         </th>
-                                         <th class="table-headin">
-                                             
-                                             Appointment number
-                                             
-                                         </th>
-                                        
-                                         
-                                         <th class="table-headin">
-                                             Patient Telephone
-                                         </th>
-                                         
-                                 </thead>
-                                 <tbody>';
-                                 
-                
-                
-                                         
-                                         $result= $database->query($sqlmain12);
-                
-                                         if($result->num_rows==0){
-                                             echo '<tr>
-                                             <td colspan="7">
-                                             <br><br><br><br>
-                                             <center>
-                                             <img src="../img/notfound.svg" width="25%">
-                                             
-                                             <br>
-                                             <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                             <a class="non-style-link" href="appointment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Appointments &nbsp;</font></button>
-                                             </a>
-                                             </center>
-                                             <br><br><br><br>
-                                             </td>
-                                             </tr>';
-                                             
-                                         }
-                                         else{
-                                         for ( $x=0; $x<$result->num_rows;$x++){
-                                             $row=$result->fetch_assoc();
-                                             $apponum=$row["apponum"];
-                                             $pid=$row["pid"];
-                                             $pname=$row["pname"];
-                                             $ptel=$row["ptel"];
-                                             
-                                             echo '<tr style="text-align:center;">
-                                                <td>
-                                                '.substr($pid,0,15).'
-                                                </td>
-                                                 <td style="font-weight:600;padding:25px">'.
-                                                 
-                                                 substr($pname,0,25)
-                                                 .'</td >
-                                                 <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
-                                                 '.$apponum.'
-                                                 
-                                                 </td>
-                                                 <td>
-                                                 '.substr($ptel,0,25).'
-                                                 </td>
-                                                 
-                                                 
-                
-                                                 
-                                             </tr>';
-                                             
-                                         }
-                                     }
-                                          
-                                     
-                
-                                    echo '</tbody>
-                
-                                 </table>
-                                 </div>
-                                 </center>
-                            </td> 
                          </tr>
 
                         </table>

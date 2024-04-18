@@ -142,7 +142,7 @@
 
                                 $patientrow = $database->query("select  * from  patient;");
                                 $doctorrow = $database->query("select  * from  doctor;");
-                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
+                                $appointmentrow = $database->query("select  * from  users where date>'$today';");
                                 $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
 
 
@@ -277,13 +277,13 @@
                                                 <th class="table-headin">
                                                     
                                                 
-                                                    Doctor
+                                                    Session date
                                                     
                                                 </th>
                                                 <th class="table-headin">
                                                     
                                                 
-                                                    Session
+                                                    Session time
                                                     
                                                 </th>
                                             </tr>
@@ -292,7 +292,8 @@
                                         
                                             <?php
                                             $nextweek=date("Y-m-d",strtotime("+1 week"));
-                                            $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today'  and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
+                                            $sqlmain= "SELECT u.ID, u.department, u.date, u.time, u.current, p.pname FROM users u
+                                            INNER JOIN patient p ON u.pid = p.pid WHERE u.date > $today";
 
                                                 $result= $database->query($sqlmain);
                 
@@ -316,35 +317,30 @@
                                                 else{
                                                 for ( $x=0; $x<$result->num_rows;$x++){
                                                     $row=$result->fetch_assoc();
-                                                    $appoid=$row["appoid"];
-                                                    $scheduleid=$row["scheduleid"];
-                                                    $title=$row["title"];
-                                                    $docname=$row["docname"];
-                                                    $scheduledate=$row["scheduledate"];
-                                                    $scheduletime=$row["scheduletime"];
-                                                    $pname=$row["pname"];
-                                                    $apponum=$row["apponum"];
-                                                    $appodate=$row["appodate"];
+                                                    $appno = $row["ID"];
+                                                    $name = $row["pname"];
+                                                    $date = $row["date"];
+                                                    $time = $row["time"];
                                                     echo '<tr>
 
 
                                                         <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);padding:20px;">
-                                                            '.$apponum.'
+                                                            '.$appno.'
                                                             
                                                         </td>
 
                                                         <td style="font-weight:600;"> &nbsp;'.
                                                         
-                                                        substr($pname,0,25)
+                                                        substr($name,0,25)
                                                         .'</td >
                                                         <td style="font-weight:600;"> &nbsp;'.
                                                         
-                                                            substr($docname,0,25)
+                                                            $date
                                                             .'</td >
                                                            
                                                         
                                                         <td>
-                                                        '.substr($title,0,15).'
+                                                        '.$time.'
                                                         </td>
 
                                                     </tr>';

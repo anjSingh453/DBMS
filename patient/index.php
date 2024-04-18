@@ -123,7 +123,7 @@
                     </td>
                 </tr>
                 <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-report">
+                    <td class="menu-btn menu-icon-hist">
                         <a href="patient_history.php" class="non-style-link-menu"><div><p class="menu-text">Patient History</p></a></div>
                     </td>
                 </tr>
@@ -171,7 +171,6 @@
 
                                 $patientrow = $database->query("select  * from  patient;");
                                 $doctorrow = $database->query("select  * from  doctor;");
-                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
                                 $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
 
 
