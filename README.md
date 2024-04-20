@@ -6,41 +6,44 @@
 
 ## Features
 
-### Admin
-  
-- Admin can add doctors, edit doctors, delete doctors    
-- Schedule new doctors sessions, remove sessions   
-- View patients details    
-- View booking of patients    
-    
-    
- 
- 
-### Doctors
-
-- View their Appointment
-- View their scheduled sessions
-- View details of patients
-- Delete account    
-- Edit account settings
-    
-
-    
 ### Patiens(Clients)
   
-  - Make appointment online
-  - Create accounts themslves
-  - View their old booking
+  - SignUp to create New Account
   - Delete account
-  - Edit account settings    
+  - View all Doctors
+  - Edit account details    
   - Chat with AI bot
-  - Use the Symptom Matching feature 
+  - Use the Symptom Matching feature
+  - Upload their clinical report
+  - See their prescription
+  - Schedule Appointment
+  - View their Appointment
+ 
+### Admin
+  
+- Admin can add New Doctors, edit, delete doctors    
+- Schedule new doctors for sessions, delete sessions   
+- View all patients in the hospital , Upload their Clinical reports    
+- View Appointment of all patients
+- Cancel the Appointment of patients 
     
+    
+### Doctors
+
+- View their Appointment with their Patients who have booked a appointment in their speciality
+- View their scheduled sessions
+- View details of their patients
+- Delete his/her account
+- View the clinical Report of their Patients
+- View Medical History of their Patient
+-     
+- Edit account settings
+      
 | Admin Dashboard | Doctor Dashboard | Patient Dashboard |
 | -------| -------| -------|
-| Email: `admin@edoc.com` | Email: `doctor@edoc.com` |   Email: `patient@edoc.com` | 
+| Email: `admin@healthsphere.com` | Email: `doctor@healthsphere.com` |   Email: `siddharth@healthsphere.com` | 
 | Password: `123` |  Password: `123` |  Password: `123` |
-| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(3).png)| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(9).png) |    ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(6).png)  |
+| ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/admin1.png)| ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/doctor1.png) |    ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/patient_dashboard1.png)  |
 
  
   
