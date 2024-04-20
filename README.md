@@ -1,6 +1,6 @@
 
 # Health Sphere Hospital Management System 
-![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/img9.jpg)
+![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/img9.jpeg)
 
 [Health Sphere](https://github.com/anjSingh453/DBMS/)  is a straightforward web project developed for e-channeling purposes, utilizing PHP, HTML, and CSS. This initiative streamlines the process of requesting appointments online for clients or patients seeking medical services from various establishments, such as clinics and hospitals. Moreover, this project provides assistance to doctors in managing their appointments effectively. The doctor's appointment system efficiently organizes each patient's schedule, allowing them to submit appointment requests to their chosen physician. The system encompasses three primary roles: administrator, doctor, and patient. The system administrator is responsible for maintaining the list of doctors, including their specialties, along with their details and system credentials. Patients can navigate the doctor's appointment system website to locate a doctor specializing in their required field. They can review the doctor's weekly schedule to identify a suitable appointment slot and submit their appointment request accordingly. Subsequently, doctors can access their appointment schedules and review patient appointment requests to determine their availability.
 
