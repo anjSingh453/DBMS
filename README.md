@@ -6,41 +6,43 @@
 
 ## Features
 
-### Admin
-  
-- Admin can add doctors, edit doctors, delete doctors    
-- Schedule new doctors sessions, remove sessions   
-- View patients details    
-- View booking of patients    
-    
-    
- 
- 
-### Doctors
-
-- View their Appointment
-- View their scheduled sessions
-- View details of patients
-- Delete account    
-- Edit account settings
-    
-
-    
 ### Patiens(Clients)
   
-  - Make appointment online
-  - Create accounts themslves
-  - View their old booking
+  - SignUp to create New Account
   - Delete account
-  - Edit account settings    
+  - View all Doctors
+  - Edit account details    
   - Chat with AI bot
-  - Use the Symptom Matching feature 
+  - Use the Symptom Matching feature
+  - Upload their clinical report
+  - See their prescription
+  - Schedule Appointment
+  - View their Appointment
+ 
+### Admin
+  
+- Admin can add New Doctors, edit, delete doctors    
+- Schedule new doctors for sessions, delete sessions   
+- View all patients in the hospital , Upload their Clinical reports    
+- View Appointment of all patients
+- Cancel the Appointment of patients 
     
+    
+### Doctors
+
+- View their Appointment with their Patients who have booked a appointment in their speciality
+- View their scheduled sessions
+- View details of their patients
+- Delete his/her account
+- View the clinical Report of their Patients
+- View Medical History of their Patient   
+- Edit account settings
+      
 | Admin Dashboard | Doctor Dashboard | Patient Dashboard |
 | -------| -------| -------|
-| Email: `admin@edoc.com` | Email: `doctor@edoc.com` |   Email: `patient@edoc.com` | 
+| Email: `admin@healthsphere.com` | Email: `doctor@healthsphere.com` |   Email: `siddharth@healthsphere.com` | 
 | Password: `123` |  Password: `123` |  Password: `123` |
-| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(3).png)| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(9).png) |    ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(6).png)  |
+| ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/admin1.png)| ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/doctor1.png) |    ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/patient_dashboard1.png)  |
 
  
   
@@ -49,30 +51,27 @@
 
 # GET STARTED
 
-1. Open your XAMPP Control Panel and start Apache and MySQL.
-2. Extract the downloaded source code zip file.
+1. Open your XAMPP Control Panel and start Apache and MySQL. If you have MySQL workbench then uninstall it if it creates issues.
+2. Extract the downloaded source code zip file/ Clone the project into your local repository
 3. Copy the extracted source code folder and paste it into the XAMPP's "htdocs" directory.
 4. Browse the PHPMyAdmin in a browser. i.e. http://localhost/phpmyadmin
 5. Create a new database naming `edoc`.
-6. Import the provided SQL file. The file is known as DATABASE edoc.sql located inside the source code root folder.
-7. Browse the Doctor's Appointment Systsem in a browser. i.e. http://localhost/edoc-echanneling-main/.
+6. Import the provided SQL file. The file is known as DATABASE edoc.sql located inside the source code folder.
+7. Browse the Doctor's Appointment Systsem in a browser. i.e. http://localhost/DBMS/.
 
 
-## Screenshots
+## Screenshots of our project
 
-| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(1).png) | ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(2).png)| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(3).png)| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(4).png)|
+| ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/scr1.png) | ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/appointment.png)| ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/chatbot.png)| ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/patient_side.png)|
 |--------------| --------------|   --------------|  --------------|    
-|  ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(5).png)| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(6).png)| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(7).png)| ![](https://github.com/hshnudr/edoc-echanneling/blob/main/Screenshots/Screenshot%20(8).png)|
+|  ![](https://github.com/anjSingh453/DBMS/blob/main/Screenshots/scr2.png)| ![]()|
+# The Project was developed using the following softwares with the following version:
 
-# The Project was developed using the following:
+PHP Version: 		`8.3.6`
 
-Apache Version: 	`2.4.39`
+Apache Version: 	`2.4.59`
 
-PHP Version: 		`7.3.5`
-
-Server Software: 	`Apache/2.4.39 (Win64) PHP/7.3.5`
-
-MySQL Version: 		`5.7.26`
+MySQL Version: 		`8.3.0`
 
 
 
