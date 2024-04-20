@@ -35,8 +35,7 @@
 - View details of their patients
 - Delete his/her account
 - View the clinical Report of their Patients
-- View Medical History of their Patient
--     
+- View Medical History of their Patient   
 - Edit account settings
       
 | Admin Dashboard | Doctor Dashboard | Patient Dashboard |
