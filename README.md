@@ -20,13 +20,13 @@
   - View their Appointment
  
 ### Admin
-  
+   
 - Admin can add New Doctors, edit, delete doctors    
 - Schedule new doctors for sessions, delete sessions   
 - View all patients in the hospital , Upload their Clinical reports    
 - View Appointment of all patients
 - Cancel the Appointment of patients 
-    
+- Doctor will give the prescription of the patients to the Admin, He will add the prescription to the respective patient.   
     
 ### Doctors
 
